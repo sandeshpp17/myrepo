@@ -1,0 +1,22 @@
+  6  oc new-app --name=unnati https://github.com/ashutoshbhakare/php
+    7  oc get pods -w
+    8  oc logs -f bc/unnati
+    9  oc get pods -w
+   10  oc get pods
+   11  oc get pods -o wide
+   12  curl 10.128.0.79
+   13  oc get nodes
+   14  oc get svc
+   15  oc exspose svc unnati
+   16  oc expose svc unnati
+   17  oc get route
+   18  oc get bc
+   19  oc start-build unnati
+   20  oc get pods -w
+   21  oc new-project test1
+   22  oc project test
+   23  oc project test1
+   24  oc new-app --name=hello1 --docker-image=workstation.lab.example.com:5000/openshift/hello-openshift
+   25  oc new-app --name=hello1 --docker-image=docker.io/openshift/hello-openshift
+   26  oc expose svc/hello1
+   27  oc get route
