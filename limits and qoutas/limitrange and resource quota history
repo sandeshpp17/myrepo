@@ -1,0 +1,7 @@
+     oc new-project fedora
+     oc project
+     vi myqota.yaml
+     oc create -f myqota.yaml -n fedora
+     oc describe quota
+     vi limit.yaml
+     oc describe limitrange
