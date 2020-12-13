@@ -2,6 +2,8 @@
       yum install nfs-utils -y  
       systemctl restart nfs-server
       mkdir /mydata 
+      chown nfsnobody:nfsnobody /mydata
+      chmod 777 /mydata
       vi /etc/exports
       exportfs -r    8  exportfs -rv
       hostname -i   10  mount -t 172
