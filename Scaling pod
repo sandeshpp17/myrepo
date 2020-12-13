@@ -1,0 +1,4 @@
+
+
+Oc scale --replicas=<expected_replica_num> deployment <deployment_label_name>
+Example :- Oc scale --replicas=3 deployment xyz
