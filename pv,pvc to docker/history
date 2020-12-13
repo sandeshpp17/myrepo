@@ -1,0 +1,74 @@
+ oc get pods
+    3  oc describe pod docker-registry-1-brwfx
+    4  yum install nfs-utils.x86_64 -y
+    5  systemctl status nfs-server.service
+    6  systemctl restart nfs-server.service
+    7  systemctl enable nfs-server.service
+    8  systemctl status nfs-server.service
+    9  mkidr  /mydata
+   10  mkdir  /mydata
+   11  chown nfsnobody:nfsnobody /mydata
+   12  chmod 777 /mydata/
+   13  vi /etc/exports
+   14  exportfs -r
+   15  exportfs -rv
+   16  hostname -i
+   17  mount -t nfs 172.17.0.13:/mydata /mnt
+   18  dh -hT
+   19  df -hT
+   20  umount /mnt
+   21  vi pvc-docker-registry.yaml
+   22  oc describe pod docker-registry-1-brwfx
+   23  oc edit dc docker-registry
+   24  vi pvc-docker-registry.yaml
+   25  hostname -i
+   26  vi pvc-docker-registry.yaml
+   27  oc apply -f pvc-docker-registry.yaml
+   28  oc get pv
+   29  oc set volume --help
+   30  oc get dc
+   31  # oc set volume dc/docker-registry --add --overwrite --name=v1 -t pvc --claim-name=pvc1 --claim-size=5Gi --claim-mode='ReadWriteMany'
+   32  oc get pv
+   33  vi pvc-docker-registry.yaml
+   34  # oc set volume dc/docker-registry --add --overwrite --name=registry-storage -t pvc --claim-name=registry-pvclaim --claim-size=5Gi --claim-mode='ReadWriteMany'
+   35  vi pvc-docker-registry.yaml
+   36  oc apply -f pvc-docker-registry.yaml
+   37   oc set volume dc/docker-registry --add --overwrite --name=registry-storage -t pvc --claim-name=registry-pvclaim --claim-size=5Gi --claim-mode='ReadWriteMany'
+   38  oc get pv,pvc
+   39  vi pvc-docker-registry.yaml
+   40  oc edit dc docker-registry
+   41  oc get pv,pvc
+   42  oc delete pv
+   43  oc get pv
+   44  oc delete pv  internal.pv
+   45  oc describe pv internal-pv
+   46  oc get pv
+   47  oc get pvc
+   48  oc describe pvc registry-pvclaim
+   49  oc edit pvc registry-pvclaim
+   50  oc delete pvc registry-pvclaim
+   51  oc delete pv
+   52  oc delete pv internal-pv
+   53  oc get pv,pvc
+   54  vi pvc-docker-registry.yaml
+   55  oc create -f pvc-docker-registry.yaml
+   56  oc get pv
+   57  oc apply -f pvc-docker-registry.yaml
+   58   oc set volume dc/docker-registry --add --name=registry-storage -t pvc --claim-name=registry-pvclaim --claim-size=5Gi --claim-mode='ReadWriteMany'
+   59  oc get pvc
+   60  oc get pv
+   61  oc edit dc docker-registry
+   62  oc get pof
+   63  oc get pod
+   64  oc exec -it docker-registry-2-jjkbl bash
+   65  oc exec -it docker-registry-2-jjkbl /bin/bash
+   66  oc get is -n openshift
+   67  oc new-app --name=http1 --docker-image=docker-registry.default.svc:5000/openshift/httpd
+   68  oc new-app --name=http1 --docker-image=registry.centos.org/centos/httpd
+   69  oc get pod
+   70  oc get pod -w
+   71  oc get svc
+   72  oc expose svc http1
+   73  oc get route
+   74  oc exec -it http1-1-69qm6 bash
+   75  oc get all
