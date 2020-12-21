@@ -12,11 +12,8 @@
      oc expose svc app1
      oc get route
      openssl genrsa -out privet.key 2048
-     openssl req -new -key example.key -out example.csr
-     openssl req -new -key privet.key -out example-ca.csr
-     openssl req -new -key privet.key -out example-ca.csr   18  ls
-     openssl x509 -req -days 366 -in example.csr \
-     openssl x509 -req -days 366 -in example-ca.csr -signkey privet.key --out public.crt
+     openssl req -new -key privet.key -out example-ca.csr  
+     ls
      openssl x509 -req -days 366 -in example-ca.csr -signkey privet.key -out public.crt
      ls
      oc get route
